@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
+
   def show
-   @user = User.find(params[:id])
+   @user = User.find_by_id(params[:id])
+   if @user.nil?
+      redirect_to login_path
+    end
   end
 
   def new
