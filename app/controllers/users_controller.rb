@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def show
-   @user = User.find_by_id(params[:id])
-   if @user.nil?
+    @user = User.find_by_id(params[:id])
+    if @user.nil?
       redirect_to login_path
     end
   end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
   
   def set_user
-   @user = User.find(session[:user_id])
+    @user = User.find(session[:user_id])
   end
 
   def correct_user
