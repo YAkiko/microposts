@@ -3,5 +3,5 @@
   <%= @user.name %>
 </h1>
 <% if @user.id == session[:user_id] %>
-<%= link_to "プロフィールを編集する" , users_edit_path , class: "btn btn-primary" %>
+<%= link_to "プロフィールを編集する" , edit_user_path , class: "btn btn-primary" %>
 <% end %>

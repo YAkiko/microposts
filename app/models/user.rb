@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
   # 名前 必須
   validates :name, presence: true, length: { maximum: 50 }
   # 地域
-  validates :area , length: { minimum: 2, maximum: 30 } , presence: false
+  validates :area , length: { minimum: 2, maximum: 30 } , presence: false, on: :update
 
   # プロフィールは必須入力かつ2文字以上30文字以下
-  validates :discription , length: { minimum: 2, maximum: 30 } , presence: false
+  validates :discription , length: { minimum: 2, maximum: 30 } , presence: false, on: :update
 
   # email
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

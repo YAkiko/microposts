@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update]
 
   def show
    @user = User.find_by_id(params[:id])
@@ -9,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    session[:user_id] = nil
     @user = User.new
   end
 
@@ -44,5 +46,10 @@ class UsersController < ApplicationController
   
   def set_user
    @user = User.find(session[:user_id])
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to root_url if @user != current_user
   end
 end
