@@ -17,4 +17,5 @@ class User < ActiveRecord::Base
   # パスワード
   has_secure_password
   
+  has_many :microposts
 end

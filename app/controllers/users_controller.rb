@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     if @user.nil?
       redirect_to login_path
     end
+    @microposts = @user.microposts.order(created_at: :desc)
   end
 
   def new
