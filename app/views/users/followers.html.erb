@@ -8,17 +8,13 @@
     </section>
     <%= link_to "フォロー", followings_user_path(@user) %> <%= link_to @user.following_users.count, followings_user_path, class:"badge" %>
     <%= link_to "フォロワー", followers_user_path(@user) %> <%= link_to @user.follower_users.count, followers_user_path, class:"badge" %>
-    <% if @user.id == session[:user_id] %>
-        <%= link_to "プロフィールを編集する" , edit_user_path , class: "btn btn-primary" %>
-    <% end %>
   </aside>
   <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-    <% end %>
+    <h3>フォロワー (<%= @follower_users.count %>)</h3>
+      <% if @user.follower_users.any? %>
+        <ol class="user">
+          <%= render @follower_users %>
+        </ol>
+      <% end %>
   </div>
 </div>
