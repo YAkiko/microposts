@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy, :show, :followings, :followers]
   before_action :correct_user, only: [:edit, :update]
-  before_action :get_user, only: [:show, :followings, :followers]
 
   def show
     @microposts = @user.microposts.order(created_at: :desc)
@@ -55,14 +54,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation, :area, :discription)
   end
-  
-  def get_user
-    @user = User.find_by_id(params[:id])
-    return redirect_to login_path if @user.nil?
-  end
 
-  def set_user
-    @user = User.find(session[:user_id])
+  def set_user 
+    @user = User.find(params[:id])
   end
 
   def correct_user
