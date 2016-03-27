@@ -2,6 +2,8 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+    <%= f.file_field :img %>
+    <%= f.check_box :remove_img %> 画像を削除する
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

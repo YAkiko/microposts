@@ -87,6 +87,11 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+input[type="file"] {
+  border: 1px solid #fff;
+  list-style: none;
+}
+
 input {
   height: auto !important;
 }
